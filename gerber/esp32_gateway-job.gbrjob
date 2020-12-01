@@ -5,9 +5,9 @@
     {
       "Vendor":      "KiCad",
       "Application": "Pcbnew",
-      "Version":     "5.1.8-db9833491~87~ubuntu18.04.1"
+      "Version":     "5.1.8-db9833491~88~ubuntu18.04.1"
     },
-    "CreationDate":  "2020-11-20T12:07:17+01:00"
+    "CreationDate":  "2020-12-01T05:37:15+01:00"
   },
   "GeneralSpecs":
   {
