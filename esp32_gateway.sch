@@ -13,8 +13,6 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
-Text Notes 600  7750 0    50   ~ 0
-OpenMQTTGateway https://docs.openmqttgateway.com/\nTx IR 38KHz: GPIO14 \nRx IR 38KHz: GPIO26 (HX1838)\nTx CC2530:  GPIO17(RX)\nRx CC2530: GPIO16(TX)\nRst CC2530: GPIO5\nTx RF 433Mhz: GPIO12 (Module STX882)\nRx RF 433Mhz: GPIO27 (Module SRX882)\nON/OFF: GPIO25\nLed WS2801: GPIO23 (Data), GPIO18(CLOCK)\nLed_Send: GPIO19\nLed_Receive: GPIO0 + boot button as full reset button (long press >10s)\nLed_Info: GPIO4\nHCSR501: GPIO32\nI2C: GPIO21/GPIO22\nADC: GPIO36\nAux: GPIO33,34,35,39\n 
 NoConn ~ 6450 3950
 NoConn ~ 6350 3950
 NoConn ~ 6250 3950
@@ -49,8 +47,6 @@ TX_CC
 Text Label 7150 3150 0    50   ~ 0
 RX_CC
 Text Label 5000 3500 0    50   ~ 0
-TX_RF
-Text Label 5000 3300 0    50   ~ 0
 RX_RF
 Text Label 7150 2750 0    50   ~ 0
 LED_TX
@@ -533,7 +529,7 @@ F 3 "" H 5750 4750 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	3300 3750 3300 3900
+	3300 3750 3300 3850
 Connection ~ 3300 3750
 $Comp
 L power:+5V #PWR0110
@@ -786,31 +782,16 @@ Wire Wire Line
 	9450 1950 9450 2150
 Connection ~ 9450 2150
 $Comp
-L Device:R R8
-U 1 1 5FBA51B6
+L Device:R R6
+U 1 1 5FBBFD7C
 P 4650 3500
-F 0 "R8" V 4600 3300 50  0000 L CNN
+F 0 "R6" V 4600 3300 50  0000 L CNN
 F 1 "100" V 4650 3450 50  0000 L CNN
 F 2 "Resistor_SMD:R_0805_2012Metric" V 4580 3500 50  0001 C CNN
 F 3 "~" H 4650 3500 50  0001 C CNN
 	1    4650 3500
 	0    1    1    0   
 $EndComp
-Wire Wire Line
-	4800 3500 5250 3500
-$Comp
-L Device:R R6
-U 1 1 5FBBFD7C
-P 4650 3300
-F 0 "R6" V 4600 3100 50  0000 L CNN
-F 1 "100" V 4650 3250 50  0000 L CNN
-F 2 "Resistor_SMD:R_0805_2012Metric" V 4580 3300 50  0001 C CNN
-F 3 "~" H 4650 3300 50  0001 C CNN
-	1    4650 3300
-	0    1    1    0   
-$EndComp
-Wire Wire Line
-	4800 3300 5250 3300
 Connection ~ 3450 3200
 Wire Wire Line
 	3450 2950 3450 3200
@@ -832,8 +813,6 @@ $EndComp
 Text Notes 3050 3550 0    50   ~ 0
 CS
 Wire Wire Line
-	3050 3550 3750 3550
-Wire Wire Line
 	3050 3200 3450 3200
 Wire Wire Line
 	3300 3100 3050 3100
@@ -846,14 +825,12 @@ L Connector:Conn_01x04_Male J8
 U 1 1 5FA128CB
 P 2850 3550
 F 0 "J8" H 2900 3700 50  0000 C CNN
-F 1 "STX882" V 2800 3500 50  0000 C CNN
+F 1 "SRX882" V 2800 3500 50  0000 C CNN
 F 2 "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical" H 2850 3550 50  0001 C CNN
 F 3 "~" H 2850 3550 50  0001 C CNN
 	1    2850 3550
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	3050 3300 4500 3300
 $Comp
 L Connector:Conn_01x03_Female J10
 U 1 1 5FC71DB4
@@ -985,23 +962,8 @@ F 3 "http://www.vishay.com/docs/81006/tsal4400.pdf" H 4400 4600 50  0001 C CNN
 	1    4450 4600
 	1    0    0    -1  
 $EndComp
-$Comp
-L Jumper:Jumper_3_Bridged12 JP1
-U 1 1 5FA2F7B6
-P 3750 3750
-F 0 "JP1" H 3600 3650 50  0000 C CNN
-F 1 "Mode" H 3750 3850 50  0000 C CNN
-F 2 "Jumper:SolderJumper-3_P1.3mm_Bridged2Bar12_Pad1.0x1.5mm_NumberLabels" H 3750 3750 50  0001 C CNN
-F 3 "~" H 3750 3750 50  0001 C CNN
-	1    3750 3750
-	1    0    0    1   
-$EndComp
 Wire Wire Line
-	3500 3750 3300 3750
-Wire Wire Line
-	3750 3600 3750 3550
-Wire Wire Line
-	3450 3450 4100 3450
+	3450 3450 3900 3450
 Connection ~ 3450 3450
 $Comp
 L Device:R R7
@@ -1407,7 +1369,7 @@ L Connector:Conn_01x03_Male J7
 U 1 1 5FA10432
 P 2850 3200
 F 0 "J7" H 2900 3350 50  0000 C CNN
-F 1 "SRX882" V 2800 3200 50  0000 C CNN
+F 1 "STX882" V 2800 3200 50  0000 C CNN
 F 2 "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical" H 2850 3200 50  0001 C CNN
 F 3 "~" H 2850 3200 50  0001 C CNN
 	1    2850 3200
@@ -1416,13 +1378,7 @@ $EndComp
 Wire Wire Line
 	3050 3450 3450 3450
 Wire Wire Line
-	3450 3500 3450 3650
-Wire Wire Line
-	3450 3650 3050 3650
-Wire Wire Line
 	3300 3100 3300 3750
-Wire Wire Line
-	3450 3500 4500 3500
 Wire Wire Line
 	3050 3750 3300 3750
 $Comp
@@ -1430,16 +1386,12 @@ L Transistor_FET:BSS138 Q3
 U 1 1 5FD9A327
 P 4350 3950
 F 0 "Q3" V 4250 4000 50  0000 L CNN
-F 1 "BSS138" V 4350 4100 50  0000 L CNN
+F 1 "BSS138" V 4500 3550 50  0000 L CNN
 F 2 "Package_TO_SOT_SMD:SOT-23" H 4550 3875 50  0001 L CIN
 F 3 "https://www.onsemi.com/pub/Collateral/BSS138-D.PDF" H 4350 3950 50  0001 L CNN
 	1    4350 3950
 	0    -1   1    0   
 $EndComp
-Wire Wire Line
-	4000 3750 4100 3750
-Wire Wire Line
-	4100 3750 4100 3450
 $Comp
 L power:GND #PWR0105
 U 1 1 5FA96F21
@@ -1681,4 +1633,59 @@ F 3 "" H 4800 1800 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	4800 1800 4800 1850
+Text Label 5000 3300 0    50   ~ 0
+TX_RF
+Wire Wire Line
+	3050 3300 3950 3300
+Text Notes 600  7750 0    50   ~ 0
+OpenMQTTGateway https://docs.openmqttgateway.com/\nTx IR 38KHz: GPIO14 \nRx IR 38KHz: GPIO26 (HX1838)\nTx CC2530:  GPIO17(RX)\nRx CC2530: GPIO16(TX)\nRst CC2530: GPIO5\nTx RF 433Mhz: GPIO27 (Module STX882)\nRx RF 433Mhz: GPIO12 (Module SRX882)\nON/OFF: GPIO25\nLed WS2801: GPIO23 (Data), GPIO18(CLOCK)\nLed_Send: GPIO19\nLed_Receive: GPIO0 + boot button as full reset button (long press >10s)\nLed_Info: GPIO4\nHCSR501: GPIO32\nI2C: GPIO21/GPIO22\nADC: GPIO36\nAux: GPIO33,34,35,39\n 
+Wire Wire Line
+	3050 3550 3600 3550
+Wire Wire Line
+	4500 3500 3950 3500
+Wire Wire Line
+	3950 3500 3950 3300
+Wire Wire Line
+	4800 3500 5250 3500
+Wire Wire Line
+	4050 3300 4050 3650
+Wire Wire Line
+	3850 3850 3900 3850
+Wire Wire Line
+	3350 3850 3300 3850
+Connection ~ 3300 3850
+Wire Wire Line
+	3300 3850 3300 3900
+$Comp
+L Jumper:Jumper_3_Bridged12 JP1
+U 1 1 5FA2F7B6
+P 3600 3850
+F 0 "JP1" H 3700 3800 50  0000 C CNN
+F 1 "Mode" H 3600 3950 50  0000 C CNN
+F 2 "Jumper:SolderJumper-3_P1.3mm_Bridged2Bar12_Pad1.0x1.5mm_NumberLabels" H 3600 3850 50  0001 C CNN
+F 3 "~" H 3600 3850 50  0001 C CNN
+	1    3600 3850
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	3900 3450 3900 3850
+$Comp
+L Device:R R8
+U 1 1 5FBA51B6
+P 4650 3300
+F 0 "R8" V 4600 3100 50  0000 L CNN
+F 1 "100" V 4650 3250 50  0000 L CNN
+F 2 "Resistor_SMD:R_0805_2012Metric" V 4580 3300 50  0001 C CNN
+F 3 "~" H 4650 3300 50  0001 C CNN
+	1    4650 3300
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	3600 3700 3600 3550
+Wire Wire Line
+	5250 3300 4800 3300
+Wire Wire Line
+	4500 3300 4050 3300
+Wire Wire Line
+	3050 3650 4050 3650
 $EndSCHEMATC
